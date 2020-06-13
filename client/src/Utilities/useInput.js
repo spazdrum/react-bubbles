@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const useInput = InitialState => {
-    const [state, setState] = useState(initialState)
+const useInput = (props) => {
+    const [state, setState] = useState(props)
     const handleChange = updatedValue => {
         setState(updatedValue)
         console.log('js: Utilities: useInput: handleChange: state', state)

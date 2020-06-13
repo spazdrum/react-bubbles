@@ -55,14 +55,14 @@ const Login = (props) => {
             type='text'
             name='username'
             placeholder='Username'
-            value={credentials.credentials.username}
+            value={credentials.username}
             onChange={handleChanges}
           />
           <input
             type='password'
             name='password'
             placeholder='Password'
-            value={credentials.credentials.password}
+            value={credentials.password}
             onChange={handleChanges}
           />
           <button type='submit'>Login</button>

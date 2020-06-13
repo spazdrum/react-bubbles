@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { axiosWithAuth } from '../Utilities/axiosWithAuth';
-import { useInput } from '../Utilities/useInput';
+import useInput from '../Utilities/useInput';
 
 const initialColor = {
   color: "",
