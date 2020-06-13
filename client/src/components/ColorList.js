@@ -51,6 +51,7 @@ const ColorList = ({ colors, updateColors }) => {
       .put(`/api/colors/${id}`, body)
       .then(res => {
         console.log('js: components: ColorList.js: saveEdit: axiosWithAuth: res', res)
+        updateColors(colors.map(item => item.id === id ? colorToEdit:item))
       })
       .catch(err => 
         console.log('js: components: ColorList.js: saveEditL: axiosWithAuth: err', err)
