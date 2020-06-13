@@ -15,16 +15,46 @@ const ColorList = ({ colors, updateColors }) => {
   const [colorToCreate, setColorToCreate, handleColorToCreate] = useInput('');
   const [hexCode, setHexCode, handleHexCode] = useInput('');
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const data = {
+      color: colorToCreate,
+      code: {hex: hexCode}
+    }
+
+    axiosWithAuth()
+      .post('/api/colors', data)
+      .then(res => {
+        console.log('js: components: ColorList.js: axiosWithAuth: res', res)
+        updateColors(res.data)
+      })
+      .catch(err => 
+        console.log('js: components: ColorList.js: axiosWithAuth: err', err)
+      )
+  }
+
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
   };
+
+  const body = { ...colorToEdit }
+  const id = colorToEdit.id
 
   const saveEdit = e => {
     e.preventDefault();
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    axiosWithAuth()
+      .put(`/api/colors/${id}`, body)
+      .then(res => {
+        console.log('js: components: ColorList.js: saveEdit: axiosWithAuth: res', res)
+      })
+      .catch(err => 
+        console.log('js: components: ColorList.js: saveEditL: axiosWithAuth: err', err)
+      )
   };
 
   const deleteColor = color => {
